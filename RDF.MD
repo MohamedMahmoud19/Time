@@ -1,6 +1,3 @@
-سنضع هذه العبارة في قسم "Installation" في ملف `README.md`. إليك الملف المحدث:
-
-```markdown
 # Clock with Dark Mode and Fullscreen Features
 
 This project is a digital clock with a beautiful and responsive design. It includes features such as dark mode and fullscreen mode, with the dark mode state saved in local storage to persist across page reloads. The clock dynamically displays the current time in hours, minutes, and seconds, and indicates AM or PM.
