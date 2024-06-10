@@ -27,7 +27,7 @@ To get a local copy up and running, follow these simple steps:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username/clock-with-dark-mode.git
+   git clone https://github.com/MOHAMMADABOULMAGD/Time
    ```
 2. Open `index.html` in your browser
 
