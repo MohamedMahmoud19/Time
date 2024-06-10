@@ -70,5 +70,3 @@ Your Name - [@your_twitter](https://twitter.com/your_twitter) - your_email@examp
 
 Project Link: [https://github.com/your_username/clock-with-dark-mode](https://github.com/your_username/clock-with-dark-mode)
 ```
-
-الآن الملف يحتوي على تعليمات واضحة حول كيفية تثبيت وتشغيل المشروع، بالإضافة إلى جميع الأقسام الضرورية الأخرى. يمكنك حفظ هذا المحتوى في ملف `README.md` داخل مشروعك على GitHub.
