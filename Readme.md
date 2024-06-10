@@ -66,6 +66,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Mohamed Mahmoud - [My Twitter](https://twitter.com) - anamohammedpro@googel.com
+Mohamed Mahmoud - [My Twitter](https://twitter.com) - anamohammedpro@gmail.com
 
 Project Link: [https://github.com/MOHAMMADABOULMAGD/Time](https://github.com/MOHAMMADABOULMAGD/Time)
