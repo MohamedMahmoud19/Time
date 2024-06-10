@@ -66,6 +66,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - your_email@example.com
+Mohamed Mahmoud - [My Twitter](https://twitter.com) - your_email@example.com
 
 Project Link: [https://github.com/MOHAMMADABOULMAGD/Time](https://github.com/MOHAMMADABOULMAGD/Time)
