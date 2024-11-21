@@ -1,0 +1,447 @@
+:root {
+  --primary-bg: linear-gradient(-45deg, #c4d2ef, #dfe6f6);
+  --dark-bg: linear-gradient(-45deg, #0a2843, #004785);
+  --button-bg: #01204E;
+  --button-hover: #2980b9;
+  --hr-color: #ff4848;
+  --min-color: #2ecc71;
+  --sec-color: #40a5e7;
+  --period-color: #e67e22;
+  --shadow-light: -1vmin -1vmin 2vmin -0.5vmin #f9fbfd, 1vmin 1vmin 2vmin #a9bee8;
+  --shadow-dark: -1vmin -1vmin 2vmin -0.5vmin #021a28, 1vmin 1vmin 2vmin #00243a;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Rubik', monospace;
+  font-size: 4vmin;
+  min-height: 100vh;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  background: var(--primary-bg);
+  align-content: center;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode {
+  background: var(--dark-bg);
+  color: #f9fbfd;
+}
+
+.clock-container {
+  padding: 2rem;
+}
+
+.clock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 8vmin;
+  height: 4vmin;
+  position: relative;
+  padding: 0 4vmin;
+  transition: all 0.3s ease;
+}
+
+.hr, .min, .sec, .period {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4vmin;
+  grid-row: 1/2;
+  align-items: start;
+}
+
+.number {
+  user-select: none;
+  width: 8vmin;
+  height: 8vmin;
+  display: grid;
+  place-items: center;
+  transition: all 500ms 100ms ease;
+  border-radius: 50%;
+}
+
+.strip {
+  transition: transform 500ms ease-in-out;
+  border-radius: 1.3vmin;
+  background-color: #dfe6f6;
+  box-shadow: var(--shadow-light);
+  will-change: transform;
+}
+
+.hr .number { color: var(--hr-color); }
+.min .number { color: var(--min-color); }
+.sec .number { color: var(--sec-color); }
+.period .number { color: var(--period-color); }
+
+.number.pop {
+  font-weight: bold;
+  transform: scale(1.3);
+  background-color: #dfe6f6;
+  box-shadow: var(--shadow-light);
+}
+
+.controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.fullscreen-btn, .theme-toggle-btn, .settings-btn {
+  background: var(--button-bg);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fullscreen-btn:hover, .theme-toggle-btn:hover, .settings-btn:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+}
+
+.fullscreen-btn i, .theme-toggle-btn i, .settings-btn i {
+  font-size: 1.5em;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .strip {
+  background-color: #1c3b57;
+  box-shadow: var(--shadow-dark);
+}
+
+body.dark-mode .number.pop {
+  background-color: #1c3b57;
+  box-shadow: var(--shadow-dark);
+}
+
+.settings-panel {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: var(--primary-bg);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-light);
+  display: none;
+  z-index: 999;
+  min-width: 250px;
+  transition: all 0.3s ease;
+}
+
+.settings-panel h3 {
+  color: var(--button-bg);
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.setting-item {
+  margin: 20px 0;
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--button-bg);
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.setting-item select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #dfe6f6;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--button-bg);
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.setting-item select:hover {
+  border-color: var(--button-hover);
+}
+
+.setting-item select:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 2px rgba(1, 32, 78, 0.1);
+}
+
+/* Dark Mode Styles for Settings Panel */
+body.dark-mode .settings-panel {
+  /*background: var(--dark-bg);*/ /*شفاف*/
+  box-shadow: var(--shadow-dark);
+}
+
+body.dark-mode .settings-panel h3 {
+  color: #fff;
+}
+
+body.dark-mode .setting-item label {
+  color: #fff;
+}
+
+body.dark-mode .setting-item select {
+  background: rgba(28, 59, 87, 0.9);
+  border-color: #004785;
+  color: #fff;
+}
+
+body.dark-mode .setting-item select:hover {
+  border-color: var(--button-hover);
+}
+
+body.dark-mode .setting-item select:focus {
+  border-color: #40a5e7;
+  box-shadow: 0 0 0 2px rgba(64, 165, 231, 0.2);
+}
+
+.settings-panel.active {
+  display: block;
+}
+
+/* Display Format Styles */
+.clock {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8vmin;
+    height: 4vmin;
+    position: relative;
+    padding: 0 4vmin;
+    transition: all 0.3s ease;
+}
+
+/* Simple format (without seconds) */
+.clock[data-display="simple"] {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+}
+
+.clock[data-display="simple"] .sec {
+    display: none;
+}
+
+/* Hide AM/PM for 24-hour format */
+.clock[data-time-format="24"] .period {
+    display: none;
+}
+
+/* Center alignment adjustments */
+.clock[data-display="simple"] {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .clock {
+        grid-gap: 6vmin;
+    }
+    
+    .clock[data-display="simple"] {
+        grid-gap: 4vmin;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Checkbox styles */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: #dfe6f6;
+    outline: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.checkbox-label input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background: var(--button-bg);
+}
+
+.checkbox-label input[type="checkbox"]:checked::before {
+    left: 22px;
+}
+
+/* Dark mode checkbox styles */
+body.dark-mode .checkbox-label input[type="checkbox"] {
+    background: #1c3b57;
+}
+
+body.dark-mode .checkbox-label input[type="checkbox"]::before {
+    background: #40a5e7;
+}
+
+body.dark-mode .checkbox-label input[type="checkbox"]:checked {
+    background: #004785;
+}
+
+.checkbox-text {
+    color: var(--button-bg);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+body.dark-mode .checkbox-text {
+    color: #fff;
+}
+
+/* Modern Switch Styles */
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 10px 0;
+}
+
+.checkbox-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    background: #e4efff;
+    border-radius: 13px;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.switch::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .switch {
+    background: #01204E;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .switch::after {
+    transform: translateX(24px);
+    background: #fff;
+}
+
+/* Hover Effects */
+.checkbox-label:hover .switch::after {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Dark Mode Styles */
+body.dark-mode .switch {
+    background: #1c3b57;
+}
+
+body.dark-mode .checkbox-label input[type="checkbox"]:checked + .switch {
+    background: #40a5e7;
+}
+
+/* Settings Panel Styles */
+.settings-panel {
+    background: #a9bee840;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px 30px;
+    min-width: 280px;
+}
+
+.settings-panel h3 {
+    color: #01204e;
+    font-size: 1.3em;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 10px 0;
+}
+
+.checkbox-text {
+    color: #01204e;
+    font-size: 0.8em;
+    font-weight: 500;
+    order: 2;
+}
+
+.checkbox-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    order: 1;
+}
+
+.switch {
+    margin-right: 0;
+    margin-left: 0;
+}

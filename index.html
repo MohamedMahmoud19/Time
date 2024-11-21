@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <title>Clock</title>
+    <meta name="description" content="Digital clock with dark mode and customization options">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <div class="clock-container">
-        <button class="fullscreen-btn" id="fullscreen-btn" title="Fullscreen (F)">
-            <i class="fas fa-expand"></i>
-        </button>
-              <button class="theme-toggle-btn" id="theme-toggle-btn" title="Dark Mode (D)">
-            <i class="fas fa-moon"></i>
-        </button>
+    <main class="clock-container">
+        <div class="controls">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Dark Mode (D)" aria-label="Toggle dark mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+            <button class="fullscreen-btn" id="fullscreen-btn" title="Fullscreen (F)">
+                <i class="fas fa-expand"></i>
+            </button>
+            <button class="settings-btn" id="settings-btn" title="Settings (S)">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+
         <div class="clock">
             <div class="hr">
                 <div class="strip">
                     <div class="number">0</div>
                     <div class="number">1</div>
+                    <div class="number">2</div>
                 </div>
                 <div class="strip">
                     <div class="number">0</div>
@@ -88,7 +97,25 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+
+        <div class="settings-panel" id="settings-panel">
+            <h3>Settings</h3>
+            <div class="setting-item">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="timeFormat">
+                    <span class="switch"></span>
+                </label>
+                <span class="checkbox-text">24-hour Format</span>
+            </div>
+            <div class="setting-item">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="displayFormat" checked>
+                    <span class="switch"></span>
+                </label>
+                <span class="checkbox-text">Show Seconds</span>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
